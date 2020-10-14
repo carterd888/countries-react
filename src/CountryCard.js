@@ -1,12 +1,11 @@
 import React from "react";
-import CountriesAll from "./CountriesAll.json";
 
-function DrawFlag() {
-  console.log({CountriesAll})
+function DrawFlag({listOfCountries}) {
+  // console.log({listOfCountries})
   return (
     <div className="container">
-      {CountriesAll.map((country) => (
-        <div className ="card">
+      {listOfCountries.map((country, index) => (
+        <div key={index} className="card">
           <img src={country.flag} className="flags" alt="flag"></img>
           <h3>{country.name}</h3>
           <p>Population: {country.population}</p>
