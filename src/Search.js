@@ -1,6 +1,6 @@
 import React from "react"
 
-function SearchBox({HandleSearchInput, searchInput}) {
+function SearchBox({handleSearchInput, searchInput}) {
     return (
                 <input
                   type="text"
@@ -8,7 +8,7 @@ function SearchBox({HandleSearchInput, searchInput}) {
                   value={searchInput}
                   className="form-control"
                   placeholder="Country"
-                  onChange={(event)=>HandleSearchInput(event)}
+                  onChange={(event)=>handleSearchInput(event)}
                 />
     );
     }

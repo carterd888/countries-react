@@ -1,12 +1,17 @@
 import React from "react";
 
-function DrawFlag({listOfCountries}) {
+function DrawFlag({ listOfCountries, displaySingleCountry }) {
   // console.log({listOfCountries})
   return (
     <div className="container">
       {listOfCountries.map((country, index) => (
         <div key={index} className="card">
-          <img src={country.flag} className="flags" alt="flag"></img>
+          <img
+            src={country.flag}
+            className="flags"
+            alt="flag"
+            onClick={() => displaySingleCountry(country)}
+          ></img>
           <h3>{country.name}</h3>
           <p>Population: {country.population}</p>
           <p>Region: {country.region}</p>
@@ -15,6 +20,6 @@ function DrawFlag({listOfCountries}) {
       ))}
     </div>
   );
-    }
+}
 
 export default DrawFlag;
