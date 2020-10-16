@@ -1,6 +1,8 @@
 import React from "react";
+import BordersList from "./BordersList";
+import UseList from "./UseList";
 
-function SingleCountry({ country, backButton, handleBorderClick }) {
+function SingleCountry({ country, backButton }) {
   return (
     <div className="singleCard">
       <div>
@@ -12,20 +14,16 @@ function SingleCountry({ country, backButton, handleBorderClick }) {
         <p>Sub Region: {country.subregion}</p>
         <p>Capital: {country.capital}</p>
         <p>Top Level Domain: {country.topLevelDomain}</p>
-        <p>Currencies: {country.currencies[0].name}</p>
-        <p>Languages: {country.languages[0].name}</p>
+        <div>
+          Currencies: <UseList array={country.currencies} />
+        </div>
+        <div>
+          Languages: <UseList array={country.languages} />
+        </div>
+        <div>
+          Borders: <BordersList array={country.borders} />
+        </div>
       </div>
-      <ul>
-        Border Countries
-        <li onClick={() => handleBorderClick(country.borders[0])}>
-          {country.borders[0]}
-        </li>
-        <li>{country.borders[1]}</li>
-        <li>{country.borders[2]}</li>
-        <li>{country.borders[3]}</li>
-        <li>{country.borders[4]}</li>
-        <li>{country.borders[5]}</li>
-      </ul>
       <button onClick={backButton}>Back</button>
     </div>
   );

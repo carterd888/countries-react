@@ -5,6 +5,7 @@ import CountriesAll from "./CountriesAll.json";
 import "./App.css";
 import RegionSelect from "./RegionSelect";
 import SingleCountry from "./SingleCountry.js";
+import ThemeButton from "./ThemeButton.js";
 
 function searchingFor(searchInput) {
   return (country) => {
@@ -24,19 +25,16 @@ function searchingForRegion(region) {
   };
 }
 
-function searchingForBorders(a3c) {
-  return (country) => {
-    return !a3c || country.alpha3Code.includes(a3c);
-  };
-}
+
 
 function App() {
+  const [theme, setTheme] = useState("App light");
   const [country, setCountry] = useState(CountriesAll);
   const [display, setDisplay] = useState(false);
   const [singleCountry, setSingleCountry] = useState([]);
   const [region, setRegion] = useState("");
   const [searchInput, setSearchInput] = useState("");
-  const [a3c, setA3c] = useState("");
+
 
   function handleRegionFilter(event) {
     setRegion(event.target.value);
@@ -46,9 +44,12 @@ function App() {
     setSearchInput(event.target.value);
   }
 
-  function handleBorderClick(a3c) {
-    setA3c(a3c);
-    console.log("you border", borderResults);
+  function changeTheme() {
+    if (theme === "App light") {
+      setTheme("App dark");
+    } else {
+      setTheme("App light");
+    }
   }
 
   function backButton() {
@@ -64,10 +65,11 @@ function App() {
 
   let searchResult = country.filter(searchingFor(searchInput));
   let regionFilterResult = searchResult.filter(searchingForRegion(region));
-  let borderResults = country.filter(searchingForBorders(a3c));
+  
 
   return (
-    <div className="App">
+    <div className={theme}>
+    <ThemeButton changeTheme={changeTheme} />
       <RegionSelect handleRegionFilter={handleRegionFilter} />
       <SearchBox
         handleSearchInput={handleSearchInput}
@@ -76,8 +78,8 @@ function App() {
       {display ? (
         <SingleCountry
           country={singleCountry}
+          listOfCountries={regionFilterResult}
           backButton={backButton}
-          handleBorderClick={handleBorderClick}
         />
       ) : null}
       {!display ? (
