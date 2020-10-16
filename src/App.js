@@ -29,7 +29,7 @@ function searchingForRegion(region) {
 
 function App() {
   const [theme, setTheme] = useState("App light");
-  const [country, setCountry] = useState(CountriesAll);
+  // const [country, setCountry] = useState(CountriesAll);
   const [display, setDisplay] = useState(false);
   const [singleCountry, setSingleCountry] = useState([]);
   const [region, setRegion] = useState("");
@@ -63,7 +63,7 @@ function App() {
     // setSingleCountry(country)
   }
 
-  let searchResult = country.filter(searchingFor(searchInput));
+  let searchResult = CountriesAll.filter(searchingFor(searchInput));
   let regionFilterResult = searchResult.filter(searchingForRegion(region));
   
 
