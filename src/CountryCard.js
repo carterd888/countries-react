@@ -1,7 +1,6 @@
 import React from "react";
 
 function DrawFlag({ listOfCountries, displaySingleCountry }) {
-  // console.log({listOfCountries})
   return (
     <div className="container">
       {listOfCountries.map((country, index) => (

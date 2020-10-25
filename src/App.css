@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.borderList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
 li {
   list-style: none;
@@ -32,6 +37,11 @@ li {
 
 .App .flags {
   width: 100px;
+  height: 50px;
+}
+
+.App .flagSmall {
+  width: 50px;
   height: 50px;
 }
 

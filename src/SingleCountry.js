@@ -2,7 +2,7 @@ import React from "react";
 import BordersList from "./BordersList";
 import UseList from "./UseList";
 
-function SingleCountry({ country, backButton }) {
+function SingleCountry({ country, backButton, displayBorderCountry }) {
   return (
     <div className="singleCard">
       <div>
@@ -21,7 +21,11 @@ function SingleCountry({ country, backButton }) {
           Languages: <UseList array={country.languages} />
         </div>
         <div>
-          Borders: <BordersList array={country.borders} />
+          Borders:{" "}
+          <BordersList
+            array={country.borders}
+            displayBorderCountry={displayBorderCountry}
+          />
         </div>
       </div>
       <button onClick={backButton}>Back</button>

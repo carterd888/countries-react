@@ -25,16 +25,12 @@ function searchingForRegion(region) {
   };
 }
 
-
-
 function App() {
   const [theme, setTheme] = useState("App light");
-  // const [country, setCountry] = useState(CountriesAll);
   const [display, setDisplay] = useState(false);
   const [singleCountry, setSingleCountry] = useState([]);
   const [region, setRegion] = useState("");
   const [searchInput, setSearchInput] = useState("");
-
 
   function handleRegionFilter(event) {
     setRegion(event.target.value);
@@ -56,11 +52,13 @@ function App() {
     setDisplay(false);
   }
 
+function displayBorderCountry(country) {
+  setSingleCountry(country)
+}
+
   function displaySingleCountry(country) {
-    console.log(country);
     setDisplay(true);
     setSingleCountry(country);
-    // setSingleCountry(country)
   }
 
   let searchResult = CountriesAll.filter(searchingFor(searchInput));
@@ -69,7 +67,7 @@ function App() {
 
   return (
     <div className={theme}>
-    <ThemeButton changeTheme={changeTheme} />
+      <ThemeButton changeTheme={changeTheme} />
       <RegionSelect handleRegionFilter={handleRegionFilter} />
       <SearchBox
         handleSearchInput={handleSearchInput}
@@ -77,6 +75,7 @@ function App() {
       />
       {display ? (
         <SingleCountry
+          displayBorderCountry={displayBorderCountry}
           country={singleCountry}
           listOfCountries={regionFilterResult}
           backButton={backButton}
