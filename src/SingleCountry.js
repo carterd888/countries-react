@@ -9,7 +9,7 @@ function SingleCountry({ country, backButton, displayBorderCountry }) {
         <img src={country.flag} className="flags" alt="flag"></img>
         <h3>{country.name}</h3>
         <p>Native Name: {country.nativeName}</p>
-        <p>Population: {country.population}</p>
+        <p>Population: {country.population.toLocaleString()}</p>
         <p>Region: {country.region}</p>
         <p>Sub Region: {country.subregion}</p>
         <p>Capital: {country.capital}</p>
